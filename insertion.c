@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 {
     int loop_interno;
     FILE *salvar_tempo;
-    salvar_tempo = fopen("tempos em c.txt", "w");
+    salvar_tempo = fopen("tempos em c.txt", "a");
     
     for (loop_interno = 0; loop_interno < LOOP; loop_interno++)
     {
