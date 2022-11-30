@@ -1,0 +1,42 @@
+ls5x5(R11,R12,R13,R14,R15,
+      R21,R22,R23,R24,R25,
+      R31,R32,R33,R34,R35,
+      R41,R42,R43,R44,R45,
+      R51,R52,R53,R54,R55) :-
+    solution(R11,R12,R13,R14,R15,
+      		 R21,R22,R23,R24,R25,
+      		 R31,R32,R33,R34,R35,
+      		 R41,R42,R43,R44,R45,
+      		 R51,R52,R53,R54,R55),
+    nl, write('A solution to this puzzle is'), nl,
+    
+    printrow(R11,R12,R13,R14,R15),
+    printrow(R21,R22,R23,R24,R25),
+    printrow(R31,R32,R33,R34,R35),
+    printrow(R41,R42,R43,R44,R45),
+    printrow(R51,R52,R53,R54,R55).
+
+printrow(P,Q,R,S,T) :- write(' '),write(P),write(' '),write(Q),write(' '),write(R),write(' '),write(S),write(' '),write(T),nl.
+
+solution(R11,R12,R13,R14,R15,R21,R22,R23,R24,R25,R31,R32,R33,R34,R35,R41,R42,R43,R44,R45,R51,R52,R53,R54,R55) :-
+    uniq(R11,R12,R13,R14,R15),
+    uniq(R21,R22,R23,R24,R25),
+    uniq(R31,R32,R33,R34,R35),
+    uniq(R41,R42,R43,R44,R45),
+    uniq(R51,R52,R53,R54,R55),
+    uniq(R11,R21,R31,R41,R51),
+    uniq(R12,R22,R32,R42,R52),
+    uniq(R13,R23,R33,R43,R53),
+    uniq(R14,R24,R34,R44,R54),
+	uniq(R15,R25,R35,R45,R55).
+
+uniq(P,Q,R,S,T) :- num(P), num(Q), num(R), num(S), num(T),
+    			\+ P=Q,\+ P=R,\+ P=S,\+ P=T,\+ Q=R,\+ Q=S,\+ Q=T,\+ R=S,\+ R=T,\+ S=T.
+num(1). num(2). num(3). num(4). num(5).
+
+ls5x5(
+       _,_,_,_,_,
+       _,_,_,_,_,
+       _,_,_,_,_,
+       _,_,_,_,_,
+       _,_,_,_,_).
