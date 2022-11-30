@@ -1,0 +1,30 @@
+ls3x3(R11,R12,R13,
+       R21,R22,R23,
+       R31,R32,R33) :-
+    solution(R11,R12,R13,
+              R21,R22,R23,
+              R31,R32,R33),
+    nl, write('A solution to this puzzle is'), nl,
+    printrow(R11,R12,R13),
+    printrow(R21,R22,R23),
+    printrow(R31,R32,R33).
+
+printrow(P,Q,R) :-
+    write(' '), write(P), write(' '), write(Q), write(' '), write(R), nl.
+
+solution(R11,R12,R13,R21,R22,R23,R31,R32,R33) :-
+    uniq(R11,R12,R13),
+    uniq(R21,R22,R23),
+    uniq(R31,R32,R33),
+    uniq(R11,R21,R31),
+    uniq(R12,R22,R32),
+    uniq(R13,R23,R33).
+
+uniq(P,Q,R) :- num(P), num(Q), num(R),
+    			\+ P=Q, \+ P=R, \+ Q=R.
+num(1). num(2). num(3).
+
+ls3x3(
+       _,_,_,
+       _,_,_,
+       _,_,_).
